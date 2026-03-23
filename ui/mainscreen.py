@@ -782,6 +782,8 @@ if st.session_state.current_tab == "Run Scraper":
             initial_files = 0
             if os.path.exists(output_dir):
                 initial_files = len(glob.glob(os.path.join(output_dir,"*.docx")))
+
+            run_start_time = time.time()
     
             # Check if Korean website is selected
             if website == "Korea Dart":
@@ -812,8 +814,11 @@ if st.session_state.current_tab == "Run Scraper":
             
             # Store session reports
             if os.path.exists(output_dir):
-                session_files = glob.glob(os.path.join(output_dir,"*.docx"))
-                st.session_state.session_reports = session_files[initial_files:]
+                all_files = glob.glob(os.path.join(output_dir, "*.docx"))
+                st.session_state.session_reports = sorted(
+                    [f for f in all_files if os.path.getmtime(f) >= run_start_time],
+                    key=os.path.getmtime, reverse=True
+                )
     
     st.divider()
     
