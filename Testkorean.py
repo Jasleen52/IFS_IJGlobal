@@ -28,11 +28,12 @@ def get_env(key):
 # OPENAI CLIENT
 # ==============================
 
-client = AzureOpenAI(
-    api_key=get_env("AZURE_OPENAI_API_KEY"),
-    api_version=get_env("AZURE_OPENAI_API_VERSION"),
-    azure_endpoint=get_env("AZURE_OPENAI_ENDPOINT")
-)
+def get_client():
+    return AzureOpenAI(
+        api_key=get_env("AZURE_OPENAI_API_KEY"),
+        api_version=get_env("AZURE_OPENAI_API_VERSION"),
+        azure_endpoint=get_env("AZURE_OPENAI_ENDPOINT")
+    )
 
 # ==============================
 # SCRAPE WEBSITE
@@ -51,6 +52,8 @@ def scrape_text():
 # ==============================
 
 def extract_data(text):
+
+    client = get_client()
 
     prompt = f"""
 
