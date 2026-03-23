@@ -44,7 +44,8 @@ def run_scraper():
  
     print("Opening sites.json...")
  
-    with open("config/sites.json", "r") as f:
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "sites.json")
+    with open(config_path, "r") as f:
         data = json.load(f)
  
     sites = data["sites"]
@@ -269,7 +270,7 @@ def run_scraper():
         #onedrive_path = os.getenv("OneDriveCommercial") or os.getenv("OneDrive")
  
         #output_dir = os.path.join(onedrive_path, "IJ Global Extracted File")
-        output_dir = "output"
+        output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output")
 
         os.makedirs(output_dir, exist_ok=True)
  

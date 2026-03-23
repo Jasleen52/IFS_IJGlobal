@@ -98,7 +98,7 @@ Output JSON format:
 """
 
     response = client.chat.completions.create(
-        model=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
+        model=get_env("AZURE_OPENAI_DEPLOYMENT"),
         messages=[
             {"role": "system", "content": "You extract structured financial project data."},
             {"role": "user", "content": prompt}

@@ -785,18 +785,13 @@ if st.session_state.current_tab == "Run Scraper":
     
             # Check if Korean website is selected
             if website == "Korea Dart":
-                # Run Korean scraper directly
                 import Testkorean
                 with st.spinner("Running Korean scraper..."):
                     Testkorean.run()
             else:
-                # Run normal scraper in a separate process
                 import scripts.scrapper
-                import multiprocessing
                 with st.spinner("Running scraper..."):
-                    p = multiprocessing.Process(target=scripts.scrapper.run_scraper)
-                    p.start()
-                    p.join()
+                    scripts.scrapper.run_scraper()
 
             progress_bar.progress(1.0)
 
