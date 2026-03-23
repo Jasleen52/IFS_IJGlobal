@@ -792,8 +792,11 @@ if st.session_state.current_tab == "Run Scraper":
                     Testkorean.run()
             else:
                 import scripts.scrapper
+                import threading
                 with st.spinner("Running scraper..."):
-                    scripts.scrapper.run_scraper()
+                    t = threading.Thread(target=scripts.scrapper.run_scraper)
+                    t.start()
+                    t.join()
 
             progress_bar.progress(1.0)
 
