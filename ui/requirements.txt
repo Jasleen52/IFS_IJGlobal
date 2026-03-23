@@ -1,0 +1,7 @@
+streamlit
+openai
+python-docx
+requests
+lxml
+python-dotenv
+pandas
