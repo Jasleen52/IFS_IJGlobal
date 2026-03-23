@@ -121,7 +121,7 @@ def create_word(data):
 
     #onedrive_path = os.getenv("OneDriveCommercial") or os.getenv("OneDrive")
     # ✅ LOCAL OUTPUT FOLDER
-    output_folder = "output"
+    output_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
     os.makedirs(output_folder, exist_ok=True)
 
 

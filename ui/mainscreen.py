@@ -774,7 +774,7 @@ if st.session_state.current_tab == "Run Scraper":
             step_indicator.info("Step 4/4 : Generating reports")
             progress_bar.progress(90)
             time.sleep(0.5)
-            output_dir = "output"
+            output_dir = os.path.join(project_root, "output")
             os.makedirs(output_dir, exist_ok=True)
     
     
@@ -881,7 +881,7 @@ elif st.session_state.current_tab == "Past Reports":
         
         #onedrive_path = os.getenv("OneDriveCommercial") or os.getenv("OneDrive")
 
-        output_dir = "output"
+        output_dir = os.path.join(project_root, "output")
         os.makedirs(output_dir, exist_ok=True)
 
         if os.path.exists(output_dir):
@@ -956,7 +956,7 @@ elif st.session_state.current_tab == "Past Reports":
 
     st.subheader("📚 All Generated Reports")
 
-    output_dir = "output"
+    output_dir = os.path.join(project_root, "output")
 
     if os.path.exists(output_dir):
 

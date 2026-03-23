@@ -23,7 +23,8 @@ def get_env(key):
 def extract_project_details(text):
 
     # load prompt config
-    with open("config/prompt.json", "r") as f:
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "prompt.json")
+    with open(config_path, "r") as f:
         prompt_config = json.load(f)
 
     task = prompt_config["prompt"]["task"]

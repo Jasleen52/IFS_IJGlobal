@@ -23,7 +23,8 @@ def get_env(key):
 def detect_news_intent(text):
 
     # relevance json load
-    with open("config/relevantnews.json") as f:
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "relevantnews.json")
+    with open(config_path) as f:
         relevance = json.load(f)
 
     phrases = relevance["relevanceFilters"]["phrases"]
